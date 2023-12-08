@@ -3,16 +3,14 @@ package com.rccars.model;
 
 import java.math.BigDecimal;
 
-public class AbstractRcCar {
-    import java.math.BigDecimal;
+public abstract class AbstractRcCar implements PriceInterface, RCInterface{
 
-    public abstract class AbstractRcCar implements PriceInterface, RCInterface {
+
+
 
         private FrameColors color;
         private String serial;
-        private String upcPrefix;
-        private String modelNumber;
-        private int startingCount;
+
 
 
         public AbstractRcCar(FrameColors color) {
@@ -20,40 +18,44 @@ public class AbstractRcCar {
         }
 
         public abstract BigDecimal getPrice();
-
         public abstract int getStartNumber();
-
-        public abstract String getUpcPrefix();
-
-        public abstract String getModelNumber();
-
-        public abstract String getSerial();
+        public abstract String getPrefix();
+        public abstract String getWheelType();
+        public abstract String getOptionName();
+        public abstract String getOptionAmount();
 
         public FrameColors getColor() {
             return color;
         }
 
-        public void setSerial(String serial) {
+        public void setSerialNumber(String serial) {
             this.serial = serial;
         }
 
         public String getSerialNumber() {
             return serial;
         }
+        `
 
-        public void setUpcPrefix(String upcPrefix) {
-            this.upcPrefix = upcPrefix;
+        @Override
+    public String  testTransmitterAndReceiver() {
+            String transmitterMessage = "we test the signal strength of the remote.";
+            String receiverMessage = "We test the signal strength of the receiver.";
+            return transmitterMessage +"\n"+receiverMessage;
         }
 
-        public void setModelNumber(String modelNumber) {
-            this.modelNumber = modelNumber;
+        @Override
+    public String assembleAndTestDrive() {
+            String assemble = "We assemble our rc cars to spec and torque.";
+            String drive = "We test drive our rc cars to ensure everything is working properly.";
+            return assemble +"\n"+ drive;
         }
 
-        public void setColor(FrameColors color) {
-            this.color = color;
-        }
+
+
+
     }
 
 
 
-}
+
